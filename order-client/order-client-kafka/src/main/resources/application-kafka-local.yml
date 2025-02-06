@@ -8,8 +8,18 @@ kafka:
   producer:
     bootstrap-servers: 127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
   topic:
-    - category: order_snapshot
-      name: "dev-sales-order-snapshot"
+    - category: order_local
+      name: "sales-order-local-kr"
+      region-code: kr
+    - category: order_api
+      name: "sales-order-api-kr"
+      region-code: kr
+    - category: order_crud
+      name: "sales-order-crud"
+    - category: order_dlq
+      name: "sales-order-dead-letter"
+    - category: order_master
+      name: "sales-order-master"
   consumer:
     bootstrap-servers: 127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
     option:

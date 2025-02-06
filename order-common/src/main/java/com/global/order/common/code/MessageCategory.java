@@ -1,0 +1,28 @@
+package com.global.order.common.code;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
+public enum MessageCategory implements CodeEnum {
+    ORDER_LOCAL("ORDER_LOCAL"),
+    ORDER_API("ORDER_API"),
+    ORDER_CRUD("ORDER_CRUD"),
+    ORDER_MASTER_SAVE("ORDER_MASTER_SAVE"),
+    ORDER_MASTER_MIGRATION("ORDER_MASTER_MIGRATION"),
+    ORDER_DLQ("ORDER_DLQ"),
+    ORDER_ALARM("ORDER_ALARM"),
+    ORDER_MASTER("ORDER_MASTER"),
+    ORDER_SNAPSHOT("ORDER_SNAPSHOT"),
+
+    RETURN_LOCAL("RETURN_LOCAL"),
+    RETURN_API("RETURN_API"),
+    RETURN_CRUD("RETURN_CRUD"),
+    RETURN_MASTER_SAVE("RETURN_MASTER_SAVE"),
+    RETURN_MASTER_MIGRATION("RETURN_MASTER_MIGRATION"),
+    RETURN_MASTER("RETURN_MASTER"),
+    RETURN_SNAPSHOT("RETURN_SNAPSHOT");
+
+    private final String text;
+}

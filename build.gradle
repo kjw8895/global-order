@@ -59,7 +59,7 @@ configure(javaProjects) {
     }
 }
 
-def restDocProjects = [project(':order-api:order-api-rest'), project(':order-api:order-api-master')]
+def restDocProjects = [project(':order-api:order-api-master')]
 configure(restDocProjects) {
     apply plugin: "org.asciidoctor.jvm.convert"
 

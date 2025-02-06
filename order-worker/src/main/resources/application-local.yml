@@ -26,29 +26,23 @@ spring:
 #    bucket: ${BUCKET}
 #    default-folder: ${DEFAULT_FOLDER}
 
-#web-client:
-#  hk:
-#    client-id: "test"
-#    url:
-#      order: "http://localhost:8080/orders"
-#      return-order: "http://localhost:8080/returns"
-#  tw:
-#    client-id: "test"
-#    url:
-#      order: "http://localhost:8080/orders"
-#      return-order: "http://localhost:8080/returns"
-#  us:
-#    client-id: "test"
-#    url:
-#      order: "http://localhost:8080/orders"
-#      return-order: "http://localhost:8080/returns"
-#  kr:
-#    client-id: "test"
-#    url:
-#      order: "https://saturn-gateway-api.dev.kr.riman.com/order/v1/public/global/sales-order"
-#      return-order: "https://saturn-gateway-api.dev.kr.riman.com/order/v1/public/global/return-order"
-##      order: "http://localhost:8080/orders"
-##      return-order: "http://localhost:8080/returns"
+web-client:
+  hk:
+    client-id: "test"
+    url:
+      order: "http://localhost:8080/orders"
+  tw:
+    client-id: "test"
+    url:
+      order: "http://localhost:8080/orders"
+  us:
+    client-id: "test"
+    url:
+      order: "http://localhost:8080/orders"
+  kr:
+    client-id: "test"
+    url:
+      order: "http://localhost:8080/orders"
 
 logging:
   file:
