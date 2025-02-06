@@ -2,6 +2,7 @@ package com.global.order.core.application.dto;
 
 import com.global.order.common.application.dto.SalesOrderLocalDto;
 import com.global.order.common.code.RegionCode;
+import com.global.order.core.domain.SalesOrderMasterEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +31,20 @@ public class SalesOrderMasterEntityDto {
         dto.paymentDatetime = salesOrderLocalDto.getPaymentDatetime();
         dto.createdDatetime = salesOrderLocalDto.getCreatedDatetime();
         dto.modifiedDatetime = salesOrderLocalDto.getModifiedDatetime();
+
+        return dto;
+    }
+
+    public static SalesOrderMasterEntityDto toDto(SalesOrderMasterEntity entity) {
+        SalesOrderMasterEntityDto dto = new SalesOrderMasterEntityDto();
+        dto.id = entity.getId();
+        dto.salesOrderId = entity.getSalesOrderId();
+        dto.userId = entity.getUserId();
+        dto.orderNumber = entity.getOrderNumber();
+        dto.regionCode = entity.getRegionCode();
+        dto.paymentDatetime = entity.getPaymentDatetime();
+        dto.createdDatetime = entity.getCreatedDatetime();
+        dto.modifiedDatetime = entity.getModifiedDatetime();
 
         return dto;
     }

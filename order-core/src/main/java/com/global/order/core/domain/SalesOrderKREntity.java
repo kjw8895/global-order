@@ -1,6 +1,6 @@
 package com.global.order.core.domain;
 
-import io.hypersistence.utils.hibernate.id.Tsid;
+import com.global.order.core.annotation.CustomTsid;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -19,7 +19,7 @@ import java.util.UUID;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SalesOrderKREntity extends BaseEntity {
     @Id
-    @Tsid
+    @CustomTsid
     @Column(name = "id")
     private Long id;
 

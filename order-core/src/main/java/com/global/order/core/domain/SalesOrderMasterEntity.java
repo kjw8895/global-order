@@ -1,8 +1,8 @@
 package com.global.order.core.domain;
 
 import com.global.order.common.code.RegionCode;
+import com.global.order.core.annotation.CustomTsid;
 import com.global.order.core.application.dto.SalesOrderMasterEntityDto;
-import io.hypersistence.utils.hibernate.id.Tsid;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SalesOrderMasterEntity {
     @Id
-    @Tsid
+    @CustomTsid
     @Column(name = "id")
     private Long id;
 

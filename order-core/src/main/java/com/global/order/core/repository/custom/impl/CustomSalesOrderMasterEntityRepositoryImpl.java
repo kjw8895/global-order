@@ -2,9 +2,14 @@ package com.global.order.core.repository.custom.impl;
 
 import com.global.order.core.annotation.CustomTsid;
 import com.global.order.core.application.dto.SalesOrderMasterEntityDto;
+import com.global.order.core.application.dto.request.SalesOrderMasterRequestDto;
+import com.global.order.core.domain.QSalesOrderMasterEntity;
 import com.global.order.core.domain.SalesOrderMasterEntity;
 import com.global.order.core.repository.custom.CustomSalesOrderMasterEntityRepository;
 import com.global.order.core.utils.CustomQuerydslUtils;
+import com.querydsl.jpa.JPQLQuery;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -18,11 +23,23 @@ import java.util.List;
  */
 @Repository
 public class CustomSalesOrderMasterEntityRepositoryImpl extends QuerydslRepositorySupport implements CustomSalesOrderMasterEntityRepository {
+    private static final QSalesOrderMasterEntity SALES_ORDER_MASTER_ENTITY = QSalesOrderMasterEntity.salesOrderMasterEntity;
     private final JdbcTemplate jdbcTemplate;
 
     public CustomSalesOrderMasterEntityRepositoryImpl(JdbcTemplate jdbcTemplate) {
         super(SalesOrderMasterEntity.class);
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    @Override
+    public Page<SalesOrderMasterEntity> page(Pageable pageable, SalesOrderMasterRequestDto request) {
+        JPQLQuery<SalesOrderMasterEntity> query = from(SALES_ORDER_MASTER_ENTITY)
+                .where(CustomQuerydslUtils.where()
+                        .optionalAnd(request.getRegionCode(), () -> SALES_ORDER_MASTER_ENTITY.regionCode.eq(request.getRegionCode()))
+                        .optionalAnd(request.getUserId(), () -> SALES_ORDER_MASTER_ENTITY.userId.eq(request.getUserId()))
+                );
+
+        return CustomQuerydslUtils.page(getQuerydsl(), query, pageable);
     }
 
     @Override
