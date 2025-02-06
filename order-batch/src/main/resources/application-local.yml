@@ -1,0 +1,21 @@
+server:
+  port: 7700
+
+spring:
+  config:
+    activate:
+      on-profile: local
+    import:
+      - application-core-local.yml
+      - application-kafka-local.yml
+
+  batch:
+    job:
+      name: ORDER_DEAD_LETTER_JOB
+      enabled: true
+    jdbc:
+      initialize-schema: always
+
+
+
+

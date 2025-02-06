@@ -18,12 +18,14 @@ kafka:
       name: "sales-order-crud"
     - category: order_dlq
       name: "sales-order-dead-letter"
+    - category: order_discard
+      name: "sales-order-discard"
     - category: order_master
       name: "sales-order-master"
   consumer:
     bootstrap-servers: 127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
     option:
-      max-fail-count: 1
+      max-fail-count: 10
       max-poll-records: 1000
       fetch-max-wait-ms: 500
       fetch-max-bytes: 52428800
