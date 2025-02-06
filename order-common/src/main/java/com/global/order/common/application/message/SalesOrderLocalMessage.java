@@ -20,15 +20,13 @@ public class SalesOrderLocalMessage extends DlqMessage {
     private MessageMethodType methodType;
     // 국가 코드
     private RegionCode regionCode;
-    // 메시지 최초 생성 시간
-    private Long publishedTimestamp;
 
     public SalesOrderLocalMessage() {
         super(DlqType.SALES_ORDER_LOCAL);
     }
 
     public void validation(RegionCode correctRegionCode) {
-        if (Stream.of(id, methodType, regionCode, publishedTimestamp).anyMatch(Objects::isNull)) {
+        if (Stream.of(id, methodType, regionCode).anyMatch(Objects::isNull)) {
             throw new CommonException(CommonExceptionCode.INVALID_REQUEST);
         }
 

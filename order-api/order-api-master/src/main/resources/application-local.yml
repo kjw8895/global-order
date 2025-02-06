@@ -1,0 +1,12 @@
+server:
+  port: 7711
+
+spring:
+  config:
+    activate:
+      on-profile: local
+    import:
+      - application-core-local.yml
+
+api:
+  key: "test"

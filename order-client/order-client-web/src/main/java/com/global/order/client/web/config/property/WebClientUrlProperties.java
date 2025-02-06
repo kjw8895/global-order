@@ -39,6 +39,7 @@ public class WebClientUrlProperties {
     public static class Client {
         private String clientId;
         private Url url;
+        private String apiKey;
     }
 
     @Getter

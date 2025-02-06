@@ -17,15 +17,12 @@ public class SalesOrderApiMessage extends DlqMessage {
     private MessageMethodType methodType;
     // 국가 코드
     private RegionCode regionCode;
-    // 메시지 최초 생성 시간
-    private Long publishedTimestamp;
 
     public SalesOrderApiMessage(SalesOrderLocalMessage salesOrderLocalMessage) {
         super(DlqType.SALES_ORDER_API);
         this.id = salesOrderLocalMessage.getId();
         this.methodType = salesOrderLocalMessage.getMethodType();
         this.regionCode = salesOrderLocalMessage.getRegionCode();
-        this.publishedTimestamp = salesOrderLocalMessage.getPublishedTimestamp();
     }
 
     public static SalesOrderApiMessage toMessage(SalesOrderLocalMessage salesOrderLocalMessage) {

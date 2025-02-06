@@ -1,6 +1,6 @@
 package com.global.order.worker.facade.impl;
 
-import com.global.order.common.application.dto.SalesOrderDto;
+import com.global.order.common.application.dto.SalesOrderLocalDto;
 import com.global.order.common.application.message.SalesOrderApiMessage;
 import com.global.order.common.application.message.SalesOrderCrudMessage;
 import com.global.order.common.utils.ObjectMapperUtils;
@@ -28,7 +28,7 @@ public class SalesOrderApiMessageFacadeImpl implements SalesOrderApiMessageFacad
             message = ObjectMapperUtils.valueToObject(record, SalesOrderApiMessage.class);
 
             // api 호출
-            SalesOrderDto dto = webClientService.findOrderByOrderId(message.getId(), message.getRegionCode());
+            SalesOrderLocalDto dto = webClientService.findOrderByOrderId(message.getId(), message.getRegionCode());
 
             // 메세지 발행
             kafkaProducerService.sendToOrderCrud(SalesOrderCrudMessage.toMessage(message, dto));

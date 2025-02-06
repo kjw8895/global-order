@@ -30,19 +30,23 @@ web-client:
   hk:
     client-id: "test"
     url:
-      order: "http://localhost:8080/orders"
+      order: "http://localhost:7711/local/order"
+    api-key: "test"
   tw:
     client-id: "test"
     url:
-      order: "http://localhost:8080/orders"
+      order: "http://localhost:7711/local/order"
+    api-key: "test"
   us:
     client-id: "test"
     url:
-      order: "http://localhost:8080/orders"
+      order: "http://localhost:7711/local/order"
+    api-key: "test"
   kr:
     client-id: "test"
     url:
-      order: "http://localhost:8080/orders"
+      order: "http://localhost:7711/local/order"
+    api-key: "test"
 
 logging:
   file:

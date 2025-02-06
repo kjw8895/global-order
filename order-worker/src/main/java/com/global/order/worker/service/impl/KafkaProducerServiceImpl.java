@@ -2,10 +2,7 @@ package com.global.order.worker.service.impl;
 
 import com.global.order.client.kafka.config.property.KafkaTopicProperties;
 import com.global.order.client.kafka.service.KafkaProducerCluster;
-import com.global.order.common.application.message.CustomErrorMessage;
-import com.global.order.common.application.message.DlqMessage;
-import com.global.order.common.application.message.SalesOrderApiMessage;
-import com.global.order.common.application.message.SalesOrderCrudMessage;
+import com.global.order.common.application.message.*;
 import com.global.order.common.code.MessageCategory;
 import com.global.order.common.exception.CommonException;
 import com.global.order.worker.service.KafkaProducerService;
@@ -33,6 +30,11 @@ public class KafkaProducerServiceImpl implements KafkaProducerService {
     @Override
     public void sendToOrderCrud(SalesOrderCrudMessage message) {
         send(message, kafkaTopicProperties.getName(MessageCategory.ORDER_CRUD));
+    }
+
+    @Override
+    public void sendToOrderMaster(SalesOrderMasterMessage message) {
+        send(message, kafkaTopicProperties.getName(MessageCategory.ORDER_MASTER));
     }
 
     @Override

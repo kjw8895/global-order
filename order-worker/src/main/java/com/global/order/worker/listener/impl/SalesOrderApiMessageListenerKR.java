@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @EnableConfigurationProperties({KafkaTopicProperties.class})
-public class SalesOrderApiMessageListenerImpl implements SalesOrderApiMessageListener {
+public class SalesOrderApiMessageListenerKR implements SalesOrderApiMessageListener {
     private final SalesOrderApiMessageFacade facade;
 
     @Override

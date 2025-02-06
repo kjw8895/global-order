@@ -2,7 +2,7 @@ package com.global.order.worker.service.impl;
 
 import com.global.order.client.web.config.property.WebClientUrlProperties;
 import com.global.order.client.web.service.WebClientService;
-import com.global.order.common.application.dto.SalesOrderDto;
+import com.global.order.common.application.dto.SalesOrderLocalDto;
 import com.global.order.common.code.RegionCode;
 import com.global.order.common.constant.HttpConstant;
 import com.global.order.common.exception.CommonException;
@@ -27,12 +27,13 @@ public class OrderWebClientServiceImpl implements OrderWebClientService {
     private final WebClientUrlProperties webClientUrlProperties;
 
     @Override
-    public SalesOrderDto findOrderByOrderId(Long id, RegionCode regionCode) {
+    public SalesOrderLocalDto findOrderByOrderId(Long id, RegionCode regionCode) {
         try {
             WebClientUrlProperties.Client client = webClientUrlProperties.getClient(regionCode);
 
             Map<String, String> headers = new HashMap<>();
             headers.put(HttpConstant.X_CLIENT_ID, client.getClientId());
+            headers.put(HttpConstant.X_API_KEY, client.getClientId());
 
             String orderUrl = client.getUrl().getWithPathVariable(client.getUrl().getOrder(), id);
             CommonResponse<?> response = (CommonResponse<?>) webClientService.get(orderUrl, headers, null, CommonResponse.class);
@@ -40,7 +41,7 @@ public class OrderWebClientServiceImpl implements OrderWebClientService {
 
             log.info("api response data : {}", response.getData());
 
-            SalesOrderDto result = ObjectMapperUtils.convertTreeToValue(data, SalesOrderDto.class);
+            SalesOrderLocalDto result = ObjectMapperUtils.convertTreeToValue(data, SalesOrderLocalDto.class);
 
             if (result == null) {
                 throw new CommonException(WorkerExceptionCode.NOT_FOUND_LOCAL_RESOURCE);
