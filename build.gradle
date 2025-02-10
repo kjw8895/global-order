@@ -14,7 +14,7 @@ def javaProjects = subprojects.findAll {
     it.name != 'order-client' && it.name != 'order-module' && it.name != 'order-api'
 }
 configure(javaProjects) {
-    group 'biz.riman.global.order'
+    group 'com.global.order'
     version '1.0.0'
 
     apply plugin: 'java'
@@ -28,14 +28,6 @@ configure(javaProjects) {
 
     repositories {
         mavenCentral()
-        maven {
-            name 'nexus'
-            url = 'https://nexus.devops.riman.biz/repository/maven-public/'
-            credentials {
-                username 'developer'
-                password 'riman1234!'
-            }
-        }
     }
 
     dependencies {
