@@ -10,4 +10,4 @@
 - order-batch : 배치 관련 모듈
 
 #### 시스템 구성도 : 
-![image](https://github.com/user-attachments/assets/a0d16e8c-5a66-4206-94bb-da5cfa4a383f)
+![image](https://github.com/user-attachments/assets/98801980-a03d-4328-911e-68b3e6278ef5)
