@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,6 +22,8 @@ import java.util.List;
 public class SalesOrderMasterServiceImpl implements SalesOrderMasterService {
     private final SalesOrderMasterEntityRepository repository;
 
+    // 상위 트랜잭션 실패에 상관없이 정상 일 때 커밋
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public void execute(RegionCode regionCode, MessageMethodType methodType, List<SalesOrderCrudMessage> messages) {
         List<SalesOrderMasterEntityDto> dtoList = messages.stream().map(SalesOrderCrudMessage::getDto).map(dto -> SalesOrderMasterEntityDto.toDto(dto, regionCode)).toList();
@@ -29,6 +33,7 @@ public class SalesOrderMasterServiceImpl implements SalesOrderMasterService {
         }
     }
 
+    @Transactional
     @Override
     public void bulkInsert(List<SalesOrderMasterEntityDto> dtoList) {
         try {
@@ -43,6 +48,7 @@ public class SalesOrderMasterServiceImpl implements SalesOrderMasterService {
         }
     }
 
+    @Transactional
     @Override
     public void bulkUpdate(List<SalesOrderMasterEntityDto> dtoList) {
         try {

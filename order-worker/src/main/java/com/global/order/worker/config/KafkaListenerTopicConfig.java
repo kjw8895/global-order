@@ -9,6 +9,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * profile 마다 topic이 다르기 때문에 Bean 등록 후 사용
+ */
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
