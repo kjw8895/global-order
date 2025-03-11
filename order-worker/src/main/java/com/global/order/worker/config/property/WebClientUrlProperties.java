@@ -1,4 +1,4 @@
-package com.global.order.client.web.config.property;
+package com.global.order.worker.config.property;
 
 import com.global.order.common.code.CommonExceptionCode;
 import com.global.order.common.code.RegionCode;

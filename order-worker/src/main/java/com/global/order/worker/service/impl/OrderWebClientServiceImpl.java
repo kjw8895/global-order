@@ -1,6 +1,6 @@
 package com.global.order.worker.service.impl;
 
-import com.global.order.client.web.config.property.WebClientUrlProperties;
+import com.global.order.worker.config.property.WebClientUrlProperties;
 import com.global.order.client.web.service.WebClientService;
 import com.global.order.common.application.dto.SalesOrderLocalDto;
 import com.global.order.common.code.RegionCode;
