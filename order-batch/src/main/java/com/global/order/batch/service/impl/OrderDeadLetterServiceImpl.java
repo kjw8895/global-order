@@ -35,7 +35,7 @@ public class OrderDeadLetterServiceImpl implements OrderDeadLetterService {
         switch (type) {
             case SALES_ORDER_LOCAL -> salesOrderLocal(message);
             case SALES_ORDER_API -> salesOrderApi(message);
-            case SALES_ORDER_MASTER_SAVE -> salesOrderDatabaseDriver(message);
+            case SALES_ORDER_MASTER_SAVE -> salesOrderCrud(message);
         }
     }
 
@@ -62,7 +62,7 @@ public class OrderDeadLetterServiceImpl implements OrderDeadLetterService {
         }
     }
 
-    private void salesOrderDatabaseDriver(Object message) {
+    private void salesOrderCrud(Object message) {
         SalesOrderCrudMessage salesOrderCrudMessage = convertMessage(message, SalesOrderCrudMessage.class);
         salesOrderCrudMessage.increaseFailedCount();
 
